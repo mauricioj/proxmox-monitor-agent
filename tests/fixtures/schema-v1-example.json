@@ -1,0 +1,195 @@
+{
+  "schema": {
+    "name": "pma.metrics",
+    "version": 1
+  },
+  "collection": {
+    "status": "partial",
+    "generated_at": "2026-07-03T12:00:00Z",
+    "duration_ms": 842,
+    "errors": [
+      {
+        "module": "sensors",
+        "code": "tool_missing",
+        "message": "sensors command not found"
+      }
+    ]
+  },
+  "capabilities": {
+    "tools": {
+      "jq": true,
+      "pvesh": true,
+      "lsblk": true,
+      "findmnt": true,
+      "ip": true,
+      "sensors": false,
+      "smartctl": true,
+      "nvme": false,
+      "zpool": false,
+      "zfs": false,
+      "qm": true,
+      "pct": true
+    },
+    "features": {
+      "cluster": false,
+      "sensors": false,
+      "storage": true,
+      "disks": true,
+      "virtualization": true
+    },
+    "missing_tools": ["sensors", "nvme", "zpool", "zfs"]
+  },
+  "host": {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "hostname": "pve01",
+    "node_name": "pve01",
+    "proxmox_version": "8.2.4",
+    "kernel_version": "6.8.12-1-pve",
+    "uptime_seconds": 123456,
+    "architecture": "x86_64",
+    "boot_mode": "efi",
+    "timezone": "America/Sao_Paulo",
+    "manufacturer": "Dell Inc.",
+    "model": "PowerEdge T140",
+    "serial": null
+  },
+  "cluster": {
+    "enabled": false,
+    "name": null,
+    "node_count": null,
+    "quorate": null,
+    "nodes": []
+  },
+  "cpu": {
+    "usage_percent": 12.5,
+    "load_average": {
+      "1m": 0.42,
+      "5m": 0.37,
+      "15m": 0.31
+    },
+    "frequency_mhz": 3400,
+    "sockets": 1,
+    "cores": 4,
+    "threads": 8,
+    "model": "Intel(R) Xeon(R) E-2224",
+    "governor": "powersave",
+    "virtualization_enabled": true,
+    "per_core": [
+      {
+        "id": "cpu0",
+        "index": 0,
+        "usage_percent": 10.1,
+        "frequency_mhz": 3400
+      }
+    ]
+  },
+  "memory": {
+    "total_bytes": 34359738368,
+    "used_bytes": 12884901888,
+    "available_bytes": 21474836480,
+    "cache_bytes": 4294967296,
+    "buffers_bytes": 536870912,
+    "used_percent": 37.5,
+    "swap_total_bytes": 8589934592,
+    "swap_used_bytes": 0,
+    "swap_used_percent": 0
+  },
+  "network": [
+    {
+      "id": "net-eno1",
+      "name": "eno1",
+      "mac": "00:11:22:33:44:55",
+      "mtu": 1500,
+      "state": "up",
+      "speed_mbps": 1000,
+      "duplex": "full",
+      "bridge": null,
+      "vlan": null,
+      "rx_bytes": 123456789,
+      "tx_bytes": 987654321,
+      "rx_packets": 123456,
+      "tx_packets": 654321,
+      "rx_errors": 0,
+      "tx_errors": 0
+    }
+  ],
+  "filesystems": [
+    {
+      "id": "fs-root",
+      "mountpoint": "/",
+      "source": "/dev/mapper/pve-root",
+      "type": "ext4",
+      "total_bytes": 103079215104,
+      "used_bytes": 42949672960,
+      "available_bytes": 60129542144,
+      "used_percent": 41.7
+    }
+  ],
+  "storage": [
+    {
+      "id": "local",
+      "name": "local",
+      "type": "dir",
+      "enabled": true,
+      "active": true,
+      "shared": false,
+      "total_bytes": 103079215104,
+      "used_bytes": 42949672960,
+      "available_bytes": 60129542144,
+      "used_percent": 41.7,
+      "content": ["backup", "iso", "vztmpl"]
+    }
+  ],
+  "disks": [
+    {
+      "id": "disk-by-id-ata-Samsung_SSD_870_ABC123",
+      "id_persistent": true,
+      "name": "sda",
+      "path": "/dev/sda",
+      "by_id_path": "/dev/disk/by-id/ata-Samsung_SSD_870_ABC123",
+      "model": "Samsung SSD 870",
+      "serial": "ABC123",
+      "wwn": null,
+      "type": "ssd",
+      "transport": "sata",
+      "size_bytes": 1000204886016,
+      "removable": false
+    }
+  ],
+  "sensors": {
+    "temperatures": [],
+    "fans": [],
+    "voltages": [],
+    "power": []
+  },
+  "virtualization": {
+    "vms": [
+      {
+        "id": "vm-100",
+        "vmid": 100,
+        "name": "haos",
+        "status": "running",
+        "node": "pve01",
+        "cpu_usage_percent": 4.2,
+        "memory_used_bytes": 123456789,
+        "memory_total_bytes": 2147483648,
+        "uptime_seconds": 12345,
+        "tags": ["homeassistant"]
+      }
+    ],
+    "containers": [
+      {
+        "id": "lxc-101",
+        "ctid": 101,
+        "name": "dns",
+        "status": "running",
+        "node": "pve01",
+        "cpu_usage_percent": 1.1,
+        "memory_used_bytes": 67108864,
+        "memory_total_bytes": 536870912,
+        "uptime_seconds": 67890,
+        "tags": []
+      }
+    ]
+  }
+}

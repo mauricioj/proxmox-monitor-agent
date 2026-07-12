@@ -1,0 +1,8 @@
+[
+  {
+    "storage": "ssd240",
+    "type": "lvmthin",
+    "disable": 0,
+    "content": "rootdir,images"
+  }
+]

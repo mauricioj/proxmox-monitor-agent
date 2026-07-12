@@ -1,0 +1,18 @@
+{
+  "filesystems": [
+    {
+      "target": "/",
+      "source": "/dev/mapper/pve-root",
+      "fstype": "ext4",
+      "size": 1000,
+      "used": 400,
+      "avail": 600,
+      "children": [
+        {"target": "/proc", "source": "proc", "fstype": "proc", "size": 0, "used": 0, "avail": 0},
+        {"target": "/run", "source": "tmpfs", "fstype": "tmpfs", "size": 100, "used": 1, "avail": 99},
+        {"target": "/var/lib/vz", "source": "/dev/mapper/pve-data", "fstype": "ext4", "size": 2000, "used": 1000, "avail": 1000},
+        {"target": "/etc/pve", "source": "/dev/fuse", "fstype": "fuse", "size": 134217728, "used": 20480, "avail": 134197248}
+      ]
+    }
+  ]
+}

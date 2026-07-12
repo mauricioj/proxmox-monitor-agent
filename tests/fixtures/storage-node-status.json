@@ -1,0 +1,14 @@
+[
+  {
+    "active": 1,
+    "avail": 197298038087,
+    "content": "images,rootdir",
+    "enabled": 1,
+    "shared": 0,
+    "storage": "ssd240",
+    "total": 239817719808,
+    "type": "lvmthin",
+    "used": 42519681721,
+    "used_fraction": 0.177299999996004
+  }
+]

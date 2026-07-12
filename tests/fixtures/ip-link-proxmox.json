@@ -1,0 +1,37 @@
+[
+  {
+    "ifname": "lo",
+    "address": "00:00:00:00:00:00",
+    "mtu": 65536,
+    "operstate": "UNKNOWN",
+    "stats64": {"rx": {"bytes": 1, "packets": 1, "errors": 0}, "tx": {"bytes": 1, "packets": 1, "errors": 0}}
+  },
+  {
+    "ifname": "eno1",
+    "address": "00:11:22:33:44:55",
+    "mtu": 1500,
+    "operstate": "UP",
+    "stats64": {"rx": {"bytes": 100, "packets": 10, "errors": 0}, "tx": {"bytes": 200, "packets": 20, "errors": 0}}
+  },
+  {
+    "ifname": "vmbr0",
+    "address": "00:11:22:33:44:55",
+    "mtu": 1500,
+    "operstate": "UP",
+    "stats64": {"rx": {"bytes": 300, "packets": 30, "errors": 0}, "tx": {"bytes": 400, "packets": 40, "errors": 0}}
+  },
+  {
+    "ifname": "tap100i0",
+    "address": "aa:bb:cc:dd:ee:ff",
+    "mtu": 1500,
+    "operstate": "UNKNOWN",
+    "stats64": {"rx": {"bytes": 500, "packets": 50, "errors": 0}, "tx": {"bytes": 600, "packets": 60, "errors": 0}}
+  },
+  {
+    "ifname": "veth101i0",
+    "address": "fe:ed:fa:ce:00:01",
+    "mtu": 1500,
+    "operstate": "UP",
+    "stats64": {"rx": {"bytes": 700, "packets": 70, "errors": 0}, "tx": {"bytes": 800, "packets": 80, "errors": 0}}
+  }
+]
