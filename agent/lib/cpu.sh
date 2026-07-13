@@ -8,7 +8,7 @@ pma_cpu_totals_from_line() {
       for (i = 2; i <= NF; i++) {
         total += $i
       }
-      print idle, total
+      printf "%.0f %.0f\n", idle, total
       exit
     }
   '

@@ -23,4 +23,10 @@ invalid_usage="$(pma_cpu_usage_from_samples \
 
 [[ "$invalid_usage" == "null" ]] || fail "expected null for unchanged samples, got $invalid_usage"
 
+large_usage="$(pma_cpu_usage_from_samples \
+  'cpu  700000000 0 300000000 8000000000 0 0 0 0 0 0' \
+  'cpu  700000050 0 300000050 8000000100 0 0 0 0 0 0')"
+
+[[ "$large_usage" == "50" ]] || fail "expected 50 percent CPU usage for large samples, got $large_usage"
+
 printf 'PASS: cpu usage calculation\n'

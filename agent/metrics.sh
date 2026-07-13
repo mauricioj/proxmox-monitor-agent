@@ -182,9 +182,9 @@ missing_tool_errors_json="$(
     [
       $capabilities.missing_tools[]?
       | {
-          module: .,
-          code: "tool_missing",
-          message: (. + " command not found")
+          "module": .,
+          "code": "tool_missing",
+          "message": (. + " command not found")
         }
     ]'
 )"

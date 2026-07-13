@@ -71,8 +71,8 @@ pma_error_json() {
   local code="$2"
   local message="$3"
   jq -n --arg module "$module" --arg code "$code" --arg message "$message" '{
-    module: $module,
-    code: $code,
-    message: $message
+    "module": $module,
+    "code": $code,
+    "message": $message
   }'
 }

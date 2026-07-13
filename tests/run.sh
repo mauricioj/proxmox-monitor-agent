@@ -17,3 +17,4 @@ bash tests/install_test.sh
 bash tests/http_server_test.sh
 bash tests/module_filters_test.sh
 bash tests/cpu_usage_test.sh
+bash tests/util_test.sh
