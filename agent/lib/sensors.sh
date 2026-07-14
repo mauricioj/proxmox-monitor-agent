@@ -25,8 +25,8 @@ pma_collect_sensors() {
 
   pma_debug "sensors: render"
   jq '
-    def normalized_id($chip; $label; $raw):
-      ($chip + "-" + $label + "-" + $raw)
+    def normalized_id($chip; $sensor_label; $raw):
+      ($chip + "-" + $sensor_label + "-" + $raw)
       | gsub("[^A-Za-z0-9]+"; "-")
       | ascii_downcase
       | sub("^-"; "")
@@ -51,18 +51,18 @@ pma_collect_sensors() {
       | (reading_type(.key)) as $type
       | select($type != null)
       | {
-          id: normalized_id($chip.key; $group.key; .key),
-          type: $type,
-          label: $group.key,
-          source: $chip.key,
-          raw_label: .key,
-          value: .value
+          "id": normalized_id($chip.key; $group.key; .key),
+          "type": $type,
+          "label": $group.key,
+          "source": $chip.key,
+          "raw_label": .key,
+          "value": .value
         };
 
     {
-      temperatures: [readings | select(.type == "temperature") | del(.type)],
-      fans: [readings | select(.type == "fan") | del(.type)],
-      voltages: [readings | select(.type == "voltage") | del(.type)],
-      power: [readings | select(.type == "power") | del(.type)]
+      "temperatures": [readings | select(.type == "temperature") | del(.type)],
+      "fans": [readings | select(.type == "fan") | del(.type)],
+      "voltages": [readings | select(.type == "voltage") | del(.type)],
+      "power": [readings | select(.type == "power") | del(.type)]
     }' <<<"$sensors_json" 2>/dev/null || jq -n '{temperatures:[], fans:[], voltages:[], power:[]}'
 }
