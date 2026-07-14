@@ -16,6 +16,12 @@ pma_collect_sensors() {
     jq -n '{temperatures:[], fans:[], voltages:[], power:[]}'
     return
   fi
+  sensors_json="$(printf '%s\n' "$sensors_json" | sed '/^[[:space:]]*ERROR:/d')"
+  if ! jq empty >/dev/null 2>&1 <<<"$sensors_json"; then
+    pma_debug "sensors: invalid sensors json"
+    jq -n '{temperatures:[], fans:[], voltages:[], power:[]}'
+    return
+  fi
 
   pma_debug "sensors: render"
   jq '

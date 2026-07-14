@@ -26,7 +26,7 @@ mkdir -p "$fake_net/lo" "$fake_net/eno1/device" "$fake_net/vmbr0" "$fake_net/tap
 
 cat >"$fake_bin/sensors" <<'SCRIPT'
 #!/usr/bin/env bash
-cat tests/fixtures/sensors-coretemp.json
+cat "${PMA_TEST_SENSORS_FIXTURE:-tests/fixtures/sensors-coretemp.json}"
 SCRIPT
 
 cat >"$fake_bin/ip" <<'SCRIPT'
@@ -78,6 +78,19 @@ storage_output="$tmp_dir/storage.json"
 assert_jq "$sensors_output" '.temperatures | length == 5' "coretemp fixture must produce five temperature sensors"
 assert_jq "$sensors_output" '.temperatures[] | select(.label == "Package id 0" and .raw_label == "temp1_input" and .value == 75)' "package temperature must be parsed"
 assert_jq "$sensors_output" '.fans | length == 0' "coretemp fixture must not produce fans"
+
+(
+  export PMA_TEST_SENSORS_FIXTURE=tests/fixtures/sensors-with-inline-error.json
+  . agent/lib/util.sh
+  . agent/lib/sensors.sh
+  pma_collect_sensors
+) >"$sensors_output"
+
+assert_jq "$sensors_output" '.temperatures | length == 3' "inline sensor errors must not discard valid temperature readings"
+assert_jq "$sensors_output" '.temperatures[] | select(.source == "amdgpu-pci-e500" and .label == "edge" and .value == 43)' "amdgpu edge temperature must be parsed"
+assert_jq "$sensors_output" '.temperatures[] | select(.source == "k10temp-pci-00c3" and .label == "Tctl" and .value == 53.125)' "k10temp Tctl temperature must be parsed"
+assert_jq "$sensors_output" '.voltages | length == 2' "voltage readings must be parsed"
+assert_jq "$sensors_output" '.power | length == 1' "power readings must be parsed"
 
 (
   . agent/lib/util.sh
